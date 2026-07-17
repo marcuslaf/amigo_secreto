@@ -1,66 +1,71 @@
-# Amigo Secreto 🎁
+# Amigo Secreto
 
-Um projeto simples para sortear amigos secretos, desenvolvido com HTML, CSS e JavaScript.
+App de sorteio de amigos secretos, desenvolvido com HTML, CSS e JavaScript vanilla.
 
 ![Preview do Amigo Secreto](assets/amigo-secreto.png)
 
-## Funcionalidades ✨
+## Funcionalidades
 
-- ✅ Adicionar participantes pelo nome
-- ✅ Listar todos os participantes
-- ✅ Sortear pares de amigos secretos
-- ✅ Validação para evitar duplicatas
-- ✅ Tratamento para número ímpar de participantes
-- ✅ Interface responsiva e acessível
+- **Sorteio seguro** — Algoritmo circular shift que garante que ninguém sorteie a si mesmo
+- **Persistência** — Lista salva em localStorage, persiste ao recarregar a página
+- **Modo escuro** — Toggle dark/light com detecção automática da preferência do sistema
+- **Modal customizado** — Confirmações e notificações com overlay acessível
+- **Acessibilidade** — Labels ARIA, contraste WCAG, `prefers-reduced-motion`
+- **SEO** — Meta tags Open Graph, Twitter Cards, JSON-LD, sitemap.xml
+- **Responsivo** — Layout adaptável para mobile e desktop
 
-## Como Usar 🚀
+## Como Usar
 
-1. Adicione os nomes dos participantes no campo de texto
-2. Clique em "Adicionar" ou pressione Enter
-3. Quando todos os nomes estiverem na lista, clique em "Sortear"
-4. Veja os pares sorteados na lista de resultados
+1. Digite o nome de um participante no campo de texto
+2. Clique em "Adicionar" ou pressione `Enter`
+3. Repita para todos os participantes
+4. Clique em "Sortear amigo" para ver os pares
+5. Use o botão de sol/lua no canto superior para alternar o tema
 
-## Tecnologias Utilizadas 💻
+## Tecnologias
 
-- HTML5
-- CSS3 (com variáveis)
-- JavaScript Vanilla
-- Google Fonts (Inter e Merriweather)
+| Camada | Tecnologia |
+|--------|-----------|
+| Markup | HTML5 semântico |
+| Estilo | CSS3 com Design Tokens (variáveis) |
+| Lógica | JavaScript vanilla (ES6+, IIFE) |
+| Fontes | DM Sans + Playfair Display (Google Fonts) |
+| Ícones | SVG inline |
+| Deploy | Vercel |
 
-## Estrutura do Projeto 📂
-amigo-secreto/
+## Estrutura
 
-├── index.html
-
-├── style.css
-
-├── app.js
-
+```
+amigo_secreto/
+├── index.html          # Entry point com meta tags SEO
+├── style.css           # Design system com dark mode
+├── app.js              # Lógica da aplicação (IIFE)
+├── robots.txt          # Regras para crawlers
+├── sitemap.xml         # Sitemap para motores de busca
 ├── assets/
-
-│ └── amigo-secreto.png
-
+│   ├── amigo-secreto.png
+│   └── play_circle_outline.png
 └── README.md
+```
 
+## Conceitos Aplicados
 
-## Pré-requisitos ⚙️
+- **CSS Design Tokens** — Todas as cores, sombras, border-radius e fontes são variáveis
+- **Dark mode via CSS** — Classe `.dark` no body alterna todas as variáveis
+- **IIFE** — Código encapsulado, zero variáveis globais
+- **Event delegation** — Listeners em vez de `onclick` inline
+- **Accessibility-first** — `aria-live`, `aria-label`, `role="dialog"`, `prefers-reduced-motion`
 
-Nenhum! Basta um navegador moderno para executar.
+## Local Development
 
-## Como Contribuir 🤝
+Basta abrir `index.html` no navegador. Não há necessidade de build ou servidor local.
 
-1. Faça um fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/incrivel`)
-3. Commit suas mudanças (`git commit -m 'Adicionando feature incrível'`)
-4. Push para a branch (`git push origin feature/incrivel`)
-5. Abra um Pull Request
-
-## Autor 👨💻
+## Autor
 
 Marcus Lafaiete
 
 ---
 
 <div align="center">
-Feito com ❤️ e JavaScript
+Feito com carinho
 </div>
