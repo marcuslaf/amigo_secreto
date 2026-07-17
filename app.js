@@ -2,6 +2,26 @@
     'use strict';
 
     var STORAGE_KEY = 'amigo_secreto_lista';
+    var THEME_KEY = 'amigo_secreto_theme';
+
+    // --- Theme (dark/light) ---
+    function getPreferredTheme() {
+        var saved = localStorage.getItem(THEME_KEY);
+        if (saved) return saved;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.body.classList.add('dark');
+        } else {
+            document.body.classList.remove('dark');
+        }
+        localStorage.setItem(THEME_KEY, theme);
+    }
+
+    applyTheme(getPreferredTheme());
+
     var listaAmigos = carregarLista();
 
     function carregarLista() {
@@ -254,6 +274,7 @@
         var botaoAdicionar = document.getElementById('btnAdicionar');
         var botaoSortear = document.getElementById('btnSortear');
         var botaoLimpar = document.getElementById('btnLimpar');
+        var themeToggle = document.getElementById('themeToggle');
 
         inputAmigo.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
@@ -264,6 +285,11 @@
         botaoAdicionar.addEventListener('click', adicionarAmigo);
         botaoSortear.addEventListener('click', sortearAmigo);
         botaoLimpar.addEventListener('click', limparLista);
+
+        themeToggle.addEventListener('click', function () {
+            var isDark = document.body.classList.contains('dark');
+            applyTheme(isDark ? 'light' : 'dark');
+        });
 
         atualizarListaAmigos();
     });

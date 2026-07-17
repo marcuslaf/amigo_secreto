@@ -3,16 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- SEO Básico -->
+    <title>Amigo Secreto - Sorteio Online Grátis e Fácil</title>
+    <meta name="description" content="Faça seu amigo secreto online de forma rápida e divertida. Adicione os participantes, sortee e descubra quem é o seu amigo secreto!">
+    <meta name="keywords" content="amigo secreto, sorteio, presente, natal, presente surpresa">
+    <meta name="author" content="Amigo Secreto">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://amigosecreto.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amigosecreto.com/">
+    <meta property="og:title" content="Amigo Secreto - Sorteio Online Grátis e Fácil">
+    <meta property="og:description" content="Faça seu amigo secreto online de forma rápida e divertida. Adicione os participantes, sortee e descubra quem é o seu amigo secreto!">
+    <meta property="og:image" content="assets/amigo-secreto.png">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Amigo Secreto">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://amigosecreto.com/">
+    <meta name="twitter:title" content="Amigo Secreto - Sorteio Online Grátis e Fácil">
+    <meta name="twitter:description" content="Faça seu amigo secreto online de forma rápida e divertida.">
+    <meta name="twitter:image" content="assets/amigo-secreto.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/amigo-secreto.png">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-    <title>Amigo Secreto</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Amigo Secreto",
+        "description": "Faça seu amigo secreto online de forma rápida e divertida.",
+        "url": "https://amigosecreto.com/",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+        },
+        "inLanguage": "pt-BR"
+    }
+    </script>
 </head>
 
 <body>
     <main class="main-content">
+        <!-- Hero -->
         <header class="hero">
+            <button id="themeToggle" class="theme-toggle" aria-label="Alternar modo escuro">
+                <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
             <div class="hero__bg-shapes">
                 <span class="shape shape--1"></span>
                 <span class="shape shape--2"></span>
@@ -24,9 +90,11 @@
             </div>
         </header>
 
+        <!-- App -->
         <section class="app-section" aria-label="Aplicativo de amigo secreto">
             <div class="app-card">
 
+                <!-- Input area -->
                 <div class="input-area">
                     <div class="input-group">
                         <label for="amigo" class="sr-only">Nome do participante</label>
@@ -35,7 +103,14 @@
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
-                            <input type="text" id="amigo" class="input-field" placeholder="Digite o nome de um amigo" autocomplete="off" maxlength="40">
+                            <input
+                                type="text"
+                                id="amigo"
+                                class="input-field"
+                                placeholder="Digite o nome de um amigo"
+                                autocomplete="off"
+                                maxlength="40"
+                            >
                         </div>
                         <button id="btnAdicionar" class="btn btn--primary" aria-label="Adicionar participante">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" width="20" height="20">
@@ -48,6 +123,7 @@
                     <p class="input-hint">Pressione <kbd>Enter</kbd> para adicionar rapidamente</p>
                 </div>
 
+                <!-- Lista de participantes -->
                 <div class="participants">
                     <div class="participants__header">
                         <h2 class="participants__title">
@@ -62,6 +138,7 @@
                         <span id="counter" class="participants__counter" aria-live="polite">0</span>
                     </div>
 
+                    <!-- Empty state -->
                     <div id="emptyState" class="empty-state">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" width="48" height="48">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -76,6 +153,7 @@
                     <ul id="listaAmigos" class="participant-list" aria-label="Lista de participantes" hidden></ul>
                 </div>
 
+                <!-- Resultado do sorteio -->
                 <div id="resultadoContainer" class="result-area" hidden>
                     <h2 class="result-area__title">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="22" height="22">
@@ -90,6 +168,7 @@
                     <ul id="resultado" class="result-list" aria-label="Pares sorteados"></ul>
                 </div>
 
+                <!-- Ações -->
                 <div class="actions">
                     <button id="btnSortear" class="btn btn--draw" aria-label="Sortear amigo secreto">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="20" height="20">
@@ -109,11 +188,13 @@
             </div>
         </section>
 
+        <!-- Footer -->
         <footer class="footer">
             <p>Feito com carinho para seus sorteios</p>
         </footer>
     </main>
 
+    <!-- Modal -->
     <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal">
             <div id="modalIcon" class="modal__icon"></div>
