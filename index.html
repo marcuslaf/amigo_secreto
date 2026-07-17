@@ -61,7 +61,6 @@
 
 <body>
     <main class="main-content">
-        <!-- Hero -->
         <header class="hero">
             <button id="themeToggle" class="theme-toggle" aria-label="Alternar modo escuro">
                 <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true">
@@ -90,11 +89,8 @@
             </div>
         </header>
 
-        <!-- App -->
         <section class="app-section" aria-label="Aplicativo de amigo secreto">
             <div class="app-card">
-
-                <!-- Input area -->
                 <div class="input-area">
                     <div class="input-group">
                         <label for="amigo" class="sr-only">Nome do participante</label>
@@ -103,14 +99,7 @@
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg>
-                            <input
-                                type="text"
-                                id="amigo"
-                                class="input-field"
-                                placeholder="Digite o nome de um amigo"
-                                autocomplete="off"
-                                maxlength="40"
-                            >
+                            <input type="text" id="amigo" class="input-field" placeholder="Digite o nome de um amigo" autocomplete="off" maxlength="40">
                         </div>
                         <button id="btnAdicionar" class="btn btn--primary" aria-label="Adicionar participante">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" width="20" height="20">
@@ -123,7 +112,6 @@
                     <p class="input-hint">Pressione <kbd>Enter</kbd> para adicionar rapidamente</p>
                 </div>
 
-                <!-- Lista de participantes -->
                 <div class="participants">
                     <div class="participants__header">
                         <h2 class="participants__title">
@@ -138,7 +126,6 @@
                         <span id="counter" class="participants__counter" aria-live="polite">0</span>
                     </div>
 
-                    <!-- Empty state -->
                     <div id="emptyState" class="empty-state">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" width="48" height="48">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -153,7 +140,6 @@
                     <ul id="listaAmigos" class="participant-list" aria-label="Lista de participantes" hidden></ul>
                 </div>
 
-                <!-- Resultado do sorteio -->
                 <div id="resultadoContainer" class="result-area" hidden>
                     <h2 class="result-area__title">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="22" height="22">
@@ -168,7 +154,6 @@
                     <ul id="resultado" class="result-list" aria-label="Pares sorteados"></ul>
                 </div>
 
-                <!-- Ações -->
                 <div class="actions">
                     <button id="btnSortear" class="btn btn--draw" aria-label="Sortear amigo secreto">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" width="20" height="20">
@@ -184,17 +169,14 @@
                         <span>Limpar</span>
                     </button>
                 </div>
-
             </div>
         </section>
 
-        <!-- Footer -->
         <footer class="footer">
             <p>Feito com carinho para seus sorteios</p>
         </footer>
     </main>
 
-    <!-- Modal -->
     <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="modal">
             <div id="modalIcon" class="modal__icon"></div>
