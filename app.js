@@ -42,47 +42,16 @@ function sortearAmigo() {
         return;
     }
 
-    // Cria uma cópia da lista para manipulação
-    let listaParaSortear = [...listaAmigos];
+    const embaralhada = embaralharLista([...listaAmigos]);
     const resultadoElement = document.getElementById('resultado');
     resultadoElement.innerHTML = '';
 
-    // Verifica se é possível fazer o sorteio sem repetições
-    if (listaAmigos.length % 2 !== 0) {
-        alert('Número ímpar de participantes. Um amigo ficará sem par.');
-    }
-
-    // Embaralha a lista
-    listaParaSortear = embaralharLista(listaParaSortear);
-
-    // Cria os pares
-    for (let i = 0; i < listaAmigos.length; i++) {
-        const amigoAtual = listaAmigos[i];
-        let amigoSorteado;
-        
-        // Encontra um amigo diferente do atual
-        do {
-            if (listaParaSortear.length === 0) break;
-            amigoSorteado = listaParaSortear.pop();
-        } while (amigoSorteado === amigoAtual && listaParaSortear.length > 0);
-
-        // Se não encontrou um par válido (último elemento)
-        if (amigoSorteado === amigoAtual) {
-            // Troca com o primeiro par já feito
-            const primeiroItem = resultadoElement.firstChild;
-            if (primeiroItem) {
-                const textoExistente = primeiroItem.textContent;
-                const [original, sorteadoOriginal] = textoExistente.split(' → ');
-                
-                // Atualiza ambos os itens
-                primeiroItem.textContent = `${original} → ${amigoAtual}`;
-                amigoSorteado = sorteadoOriginal;
-            }
-        }
-
-        // Adiciona ao resultado
+    // Circular shift: cada pessoa sorteia a próxima da lista embaralhada
+    for (let i = 0; i < embaralhada.length; i++) {
+        const de = embaralhada[i];
+        const para = embaralhada[(i + 1) % embaralhada.length];
         const itemResultado = document.createElement('li');
-        itemResultado.textContent = `${amigoAtual} → ${amigoSorteado}`;
+        itemResultado.textContent = `${de} → ${para}`;
         resultadoElement.appendChild(itemResultado);
     }
 }
