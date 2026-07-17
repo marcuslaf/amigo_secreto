@@ -90,6 +90,24 @@ body {
 .button-container {
     width: 300px;
     justify-content: center;
+    display: flex;
+    gap: 12px;
+}
+
+.button-clear {
+    padding: 15px 30px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    border: 2px solid #555;
+    border-radius: 25px;
+    background: transparent;
+    color: #444;
+    cursor: pointer;
+}
+
+.button-clear:hover {
+    background: #555;
+    color: #fff;
 }
 
 /* Estilos de entrada de texto */

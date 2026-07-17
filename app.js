@@ -1,12 +1,24 @@
-// Variáveis globais
-let listaAmigos = [];
+const STORAGE_KEY = 'amigo_secreto_lista';
 
-// Função para adicionar um amigo à lista
+let listaAmigos = carregarLista();
+
+function carregarLista() {
+    try {
+        const dados = localStorage.getItem(STORAGE_KEY);
+        return dados ? JSON.parse(dados) : [];
+    } catch {
+        return [];
+    }
+}
+
+function salvarLista() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(listaAmigos));
+}
+
 function adicionarAmigo() {
     const inputAmigo = document.getElementById('amigo');
     const nomeAmigo = inputAmigo.value.trim();
 
-    // Validação do nome
     if (nomeAmigo === '') {
         alert('Por favor, digite um nome válido.');
         return;
@@ -17,13 +29,29 @@ function adicionarAmigo() {
         return;
     }
 
-    // Adiciona à lista
     listaAmigos.push(nomeAmigo);
-    inputAmigo.value = ''; // Limpa o campo de input
+    salvarLista();
+    inputAmigo.value = '';
+    inputAmigo.focus();
     atualizarListaAmigos();
 }
 
-// Função para atualizar a lista visual de amigos
+function removerAmigo(index) {
+    const nome = listaAmigos[index];
+    listaAmigos.splice(index, 1);
+    salvarLista();
+    atualizarListaAmigos();
+}
+
+function limparLista() {
+    if (listaAmigos.length === 0) return;
+    if (!confirm('Tem certeza que deseja limpar toda a lista?')) return;
+    listaAmigos = [];
+    salvarLista();
+    atualizarListaAmigos();
+    document.getElementById('resultado').innerHTML = '';
+}
+
 function atualizarListaAmigos() {
     const listaAmigosElement = document.getElementById('listaAmigos');
     listaAmigosElement.innerHTML = '';
@@ -31,11 +59,17 @@ function atualizarListaAmigos() {
     listaAmigos.forEach((amigo, index) => {
         const itemLista = document.createElement('li');
         itemLista.textContent = `${index + 1}. ${amigo}`;
+
+        const botaoRemover = document.createElement('button');
+        botaoRemover.textContent = ' ×';
+        botaoRemover.setAttribute('aria-label', 'Remover ' + amigo);
+        botaoRemover.onclick = () => removerAmigo(index);
+
+        itemLista.appendChild(botaoRemover);
         listaAmigosElement.appendChild(itemLista);
     });
 }
 
-// Função para sortear os amigos secretos
 function sortearAmigo() {
     if (listaAmigos.length < 2) {
         alert('Adicione pelo menos 2 amigos para realizar o sorteio!');
@@ -46,7 +80,6 @@ function sortearAmigo() {
     const resultadoElement = document.getElementById('resultado');
     resultadoElement.innerHTML = '';
 
-    // Circular shift: cada pessoa sorteia a próxima da lista embaralhada
     for (let i = 0; i < embaralhada.length; i++) {
         const de = embaralhada[i];
         const para = embaralhada[(i + 1) % embaralhada.length];
@@ -56,7 +89,6 @@ function sortearAmigo() {
     }
 }
 
-// Função para embaralhar uma lista (algoritmo Fisher-Yates)
 function embaralharLista(lista) {
     const novaLista = [...lista];
     for (let i = novaLista.length - 1; i > 0; i--) {
@@ -66,14 +98,14 @@ function embaralharLista(lista) {
     return novaLista;
 }
 
-// Event listeners para melhor usabilidade
 document.addEventListener('DOMContentLoaded', () => {
     const inputAmigo = document.getElementById('amigo');
-    
-    // Permite adicionar com Enter
+
     inputAmigo.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             adicionarAmigo();
         }
     });
+
+    atualizarListaAmigos();
 });
